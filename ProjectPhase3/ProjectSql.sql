@@ -4,7 +4,7 @@ CREATE TABLE users(
     user_name VARCHAR(20) NOT NULL,
     user_password VARCHAR(20) NOT NULL,
     PRIMARY KEY(user_id)
-);
+); 
 
 CREATE TABLE locations(
     location_id INT(4),
@@ -13,7 +13,16 @@ CREATE TABLE locations(
     city VARCHAR(30) NOT NULL,
     state_province VARCHAR(25),
     PRIMARY KEY(location_id)
-); 
+);
+
+ CREATE TABLE products(
+    product_id INT(4) AUTO_INCREMENT,
+    product_name VARCHAR(20) NOT NULL,
+    product_quantity INT(8) NOT NULL,
+    product_price DECIMAL(8, 2) CHECK
+        (product_price > 0),
+        PRIMARY KEY(product_id)
+);
 
 CREATE TABLE store(
     store_id INT(4),
@@ -22,11 +31,10 @@ CREATE TABLE store(
     manager_id INT(6),
     location_id INT(4),
     PRIMARY KEY(store_id),
-    FOREIGN KEY(manager_id) REFERENCES employees(manager_id),
     FOREIGN KEY(location_id) REFERENCES locations(location_id)
-); 
+);
 
-CREATE TABLE employees(
+ CREATE TABLE employees(
     employee_id INTEGER(6) AUTO_INCREMENT,
     first_name VARCHAR(20),
     last_name VARCHAR(25) NOT NULL,
@@ -44,15 +52,6 @@ CREATE TABLE employees(
         FOREIGN KEY(location_id) REFERENCES locations(location_id)
 );
 
-CREATE TABLE products(
-    product_id INT(4) AUTO_INCREMENT,
-    product_name VARCHAR(20) NOT NULL,
-    product_quantity INT(8) NOT NULL,
-    product_price DECIMAL(8, 2) CHECK
-        (product_price > 0),
-        PRIMARY KEY(product_id)
-);
-
 CREATE TABLE supplier(
     supplier_id INT(4) AUTO_INCREMENT,
     supplier_name VARCHAR(20) NOT NULL,
@@ -64,7 +63,7 @@ CREATE TABLE supplier(
     FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
 
-CREATE TABLE merchandise(
+ CREATE TABLE merchandise(
     merchandise_id INT(4) AUTO_INCREMENT,
     store_id INT(4),
     supplier_id INT(4),
@@ -87,7 +86,7 @@ CREATE TABLE customers(
     PRIMARY KEY(customer_id),
     FOREIGN KEY(store_id) REFERENCES store(store_id),
     FOREIGN KEY(location_id) REFERENCES locations(location_id)
-);
+); 
 
 CREATE TABLE sales(
     sale_id INT(4) AUTO_INCREMENT,
