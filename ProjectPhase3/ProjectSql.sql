@@ -14,7 +14,10 @@ CREATE TABLE locations(
     state_province VARCHAR(25),
     PRIMARY KEY(location_id)
 );
+INSERT INTO locations VALUES( 100, '9001 Patterson Ave', '23229', 'Richmond', 'Virginia' );
+INSERT INTO locations VALUES( 101, '11 Vintage Dr', '23229', 'Henrico', 'Virginia' );
 
+ 
  CREATE TABLE products(
     product_id INT(4) AUTO_INCREMENT,
     product_name VARCHAR(20) NOT NULL,
@@ -33,6 +36,8 @@ CREATE TABLE store(
     PRIMARY KEY(store_id),
     FOREIGN KEY(location_id) REFERENCES locations(location_id)
 );
+INSERT INTO store VALUES (1250,'Quick & Easy','804-236-2564',1,100);
+INSERT INTO store VALUES (0568,'Quick & Easy','804-266-6564',2,100);
 
  CREATE TABLE employees(
     employee_id INTEGER(6) AUTO_INCREMENT,
@@ -51,6 +56,9 @@ CREATE TABLE store(
         FOREIGN KEY(store_id) REFERENCES store(store_id),
         FOREIGN KEY(location_id) REFERENCES locations(location_id)
 );
+INSERT INTO employees VALUES (1,'Roshan','Pradhan','pradhanr@vcu.edu','804-502-3157',STR_TO_DATE('17-06-2003', '%d-%m-%Y'),NULL,28000,100,2001,1250);
+INSERT INTO employees VALUES (2,'Ashok','Subedi','subedia@vcu.edu','717-502-3157',STR_TO_DATE('17-06-2014', '%d-%m-%Y'),001,30000,101,NULL,1250);
+
 
 CREATE TABLE supplier(
     supplier_id INT(4) AUTO_INCREMENT,
@@ -87,6 +95,8 @@ CREATE TABLE customers(
     FOREIGN KEY(store_id) REFERENCES store(store_id),
     FOREIGN KEY(location_id) REFERENCES locations(location_id)
 ); 
+INSERT INTO customers VALUES (101,'Ryan','Shrestha','ryan@gmail.com','804-256-3564',100,0568);
+INSERT INTO customers VALUES (102,'Rylan','Subedi','rylan@gmail.com','804-256-3564',100,0568);
 
 CREATE TABLE sales(
     sale_id INT(4) AUTO_INCREMENT,
