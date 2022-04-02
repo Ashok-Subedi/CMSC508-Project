@@ -26,6 +26,9 @@ INSERT INTO locations VALUES( 101, '11 Vintage Dr', '23229', 'Henrico', 'Virgini
         (product_price > 0),
         PRIMARY KEY(product_id)
 );
+INSERT INTO products(product_id, product_name, product_quantity, product_price) VALUES (0001,'Johnnie Walker',100,61.99);
+INSERT INTO products(product_id, product_name, product_quantity, product_price) VALUES (0010,'Red Wine',50,31.99);
+INSERT INTO products(product_id, product_name, product_quantity, product_price) VALUES (0101,'Ice Cream',10,9.99);
 
 CREATE TABLE store(
     store_id INT(4),
