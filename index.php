@@ -15,6 +15,9 @@
         <li><a href="config.php">Connections</a></li>
         <li><a href="employees.php">List all employees</a></li>
         <li><a href="addEmployee.php">Add Employee</a></li>
+        <li><a href="register.php">Register</a></li>
+        <li><a href="login.php">Loging</a></li>
+        <li><a href="welcome.php">Welcome</a></li>
 
     </ul>
 </body>

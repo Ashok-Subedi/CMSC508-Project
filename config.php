@@ -11,7 +11,7 @@ $database = "project_pradhanr";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connection Sucessful!! ";
+    //echo "Connection Sucessful!! ";
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }

@@ -3,6 +3,7 @@ CREATE TABLE users(
     user_id INT(4) AUTO_INCREMENT,
     user_name VARCHAR(20) NOT NULL,
     user_password VARCHAR(20) NOT NULL,
+    user_created DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(user_id)
 )AUTO_INCREMENT=500; 
 
