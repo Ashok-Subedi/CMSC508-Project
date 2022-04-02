@@ -10,6 +10,13 @@
 
 <body>
     <h1>Welcome to Quick N Easy</h1>
+
+    <ul>
+        <li><a href="config.php">Connections</a></li>
+        <li><a href="employees.php">List all employees</a></li>
+        <li><a href="addEmployee.php">Add Employee</a></li>
+
+    </ul>
 </body>
 
 </html>
