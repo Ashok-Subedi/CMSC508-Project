@@ -40,11 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check input errors before updating the database
     if (empty($new_password_err) && empty($confirm_password_err)) {
         // Prepare an update statement
-        $sql = "UPDATE users SET user_password = :user_password WHERE user_id = :user_id";
+        $sql = "UPDATE users SET user_password = :password WHERE user_id = :user_id";
 
         if ($stmt = $conn->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":user_password", $param_password, PDO::PARAM_STR);
+            $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
             $stmt->bindParam(":user_id", $param_id, PDO::PARAM_INT);
 
             // Set parameters
