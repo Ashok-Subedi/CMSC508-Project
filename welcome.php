@@ -25,15 +25,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 </head>
 
 <body>
-    <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
-    <p>
+    <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to Quick & Easy.</h1>
+    <h2 class="my-5">We are glad to have you!!</h2>
+
+    <p class="my-5">
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
     </p>
 
     <ul>
-        <li><a href="employees.php" class="btn btn-primary">List all employees</a></li>
-        <li><a href="addEmployee.php"class="btn btn-success">Add Employee</a></li>
+        <a href="employees.php" class="btn btn-primary">List all employees</a>
+    
+        <a href="addEmployee.php"class="btn btn-success ml-5">Add Employee</a>
 
     </ul>
 
