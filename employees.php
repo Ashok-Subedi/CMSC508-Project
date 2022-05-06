@@ -15,8 +15,6 @@
 
 require_once('config.php');
 echo "<h1>Employee Lists</h1>";
-// Show all employees
-
 
 $stmt = $conn->prepare("SELECT employee_id, first_name, last_name, phone_number  FROM employees ORDER BY first_name, last_name");
 $stmt->execute();
