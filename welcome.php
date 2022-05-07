@@ -93,8 +93,11 @@ if(isset($_GET['success'])){
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="custom.css">
+    <link rel="stylesheet" type="text/css" href="./custom.css">
     <style>
         body {
             font: 14px sans-serif;
@@ -116,52 +119,18 @@ if(isset($_GET['success'])){
 </nav>
 
 <body>
-    <br/>
-    <div class="container">
-
-    <?php
-    $query = "SELECT * FROM products ORDER BY product_id ASC";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-    
-    
-
-   
-
-    foreach($result as $row){
-        ?>
-        <div class="col-md-3">
-            <form method="post">
-                <div class="inner-div">
-                    <img src="./drink.png" class="img img-responsive"/>
-                    <h4 class="text-info"><?php echo $row["product_name"];?></h4>
-                    <h4 class="text-danger"><?php echo $row["product_price"];?></h4>
-                    <input type="text" name="quantity" value="1" class="form-control"/>
-                    <input type="hidden" name="hidden_name" value="<?php echo $row["product_name"]; ?>" />
-                    <input type="hidden" name="hidden_price" value="<?php echo $row["product_price"]; ?>" />
-                    <input type="hidden" name="hidden_id" value="<?php echo $row["product_id"]; ?>" />
-                    <input type="submit" name="add_to_cart" value="Add to Cart" class="btn btn-success" style="margin-top:5px" />
-                </div>  
-            </form>
-        </div>  
-
-        <?php
-    }
-
-    ?>
-
-    <div style="clear:both"></div>
-    <br />
-    <h3>Order Details</h3>
+<div class="container">
+    <h1 class="product-title">Products</h1>
+<div class="table-div container">
+    <h3 class="table-title">Order Details</h3>
     <?php echo $message;?>
     <table class="table table-bordered">
         <tr>
-            <th width="40%">Item Name</th>
-            <th width="10%">Quantity</th>
-            <th width="20%">Price</th>
-            <th width="15%">Total</th>
-            <th width="5%">Action</th>
+            <th class="table-col" width="40%">Item Name</th>
+            <th class="table-col" width="10%">Quantity</th>
+            <th class="table-col" width="20%">Price</th>
+            <th class="table-col" width="15%">Total</th>
+            <th class="table-col" width="5%">Action</th>
         </tr>
         <?php
         if(isset($_COOKIE['shopping_cart'])){
@@ -199,7 +168,48 @@ if(isset($_GET['success'])){
         ?>
     </table>
     </div>
+    <br/>
+    <div class="container">
+    <div class="row">
+
+    <?php
+    $query = "SELECT * FROM products ORDER BY product_id ASC";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+
+    foreach($result as $row){
+        ?>
+            <div class="product-container col-md-3">
+                <form method="post">
+                    <div class="inner-div">
+                        <img src="./drink.png" class="img img-responsive"/>
+                        <h4 class="product-name"><?php echo $row["product_name"];?></h4>
+                        <h4 class="product-price"><?php echo $row["product_price"];?></h4>
+                        <div class="quantity-container">
+                        <span class="quality-text"> Quantity : </span>
+                        <input type="text" name="quantity" value="1" class="quantity form-control"/>
+                        </div>
+                        <input type="hidden" name="hidden_name" value="<?php echo $row["product_name"]; ?>" />
+                        <input type="hidden" name="hidden_price" value="<?php echo $row["product_price"]; ?>" />
+                        <input type="hidden" name="hidden_id" value="<?php echo $row["product_id"]; ?>" />
+                        <input type="submit" name="add_to_cart" value="Add to Cart" class=" add-cart-btn btn btn-success" style="margin-top:10px" />
+                    </div>  
+                </form>
+            </div> 
+
+        <?php
+    }
     
+
+    ?>
+    </div>
+    </div>
+
+
+    <br />
+  
+ 
 
     <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to Quick & Easy.</h1>
     <h2 class="my-5">We are glad to have you!!</h2>
