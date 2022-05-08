@@ -73,7 +73,7 @@ if(isset($_GET["remove"])){
     $message = '
     <div class="alert alert-success" role="alert">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    Item removed into Cart </div>';
+    Item removed from Cart </div>';
 }
 
     
@@ -129,8 +129,8 @@ if(isset($_GET['success'])){
                 </div>
             </a>
             <li><a class="active product" href="welcome.php" ><i class="fa-solid fa-bag-shopping icon-active"></i>Products</a></li>
-            <li><a href="index.php"><i class="fa-solid fa-envelope"></i>Contact</a></li>
-            <li><a href="index.php"><i class="fa-solid fa-user"></i>User</a></li>
+            <li><a href="contact.php"><i class="fa-solid fa-envelope"></i>Contact</a></li>
+            <li><a href="user.php"><i class="fa-solid fa-user"></i>User</a></li>
             <li><a href="index.php"><i class="fa-solid fa-user-lock"></i>Admin</a></li>
             <a class="logout-link" href="index.php"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
 
@@ -180,14 +180,16 @@ if(isset($_GET['success'])){
                         }
                     ?>
                         <tr> 
-                            <td colspan="3" align="right">Total</td>
-                            <td align="right">$ <?php echo number_format($total, 2); ?>  
+                            <td colspan="3" align="right" style="padding-top: 25px; font-weight: 700">Total</td>
+                            <td align="center"  style="padding-top: 25px">$ <?php echo number_format($total, 2); ?>  </td>
+                            <td><a align="right" class="btn btn-success">Checkout</a></td>
+                            
                         </tr>
                 <?php
                 }else{
                     echo '
                     <tr>
-                        <td colspan="5" align="center">No Item in Cart"</td>
+                        <td colspan="5" align="center">No Item in Cart</td>
                     <tr>
                     ';
                 }
